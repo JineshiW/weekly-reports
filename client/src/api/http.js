@@ -23,7 +23,7 @@ export async function request(path, options = {}) {
 
   const response = await fetch(baseUrl + path, {
     method: options.method || "GET",
-    // Include cookies too, in case the backend also relies on a session cookie
+    // Include cookies , in case the backend also relies on a session cookie
     credentials: "include",
     headers: {
       "Content-Type": "application/json",

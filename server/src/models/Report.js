@@ -81,7 +81,7 @@ const reportSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// One report per owner/week/project combination — prevents duplicate reports
+// One report per owner/week/project combination - prevents duplicate reports
 // for the same week and project.
 reportSchema.index({ owner: 1, weekStart: 1, project: 1 }, { unique: true });
 
