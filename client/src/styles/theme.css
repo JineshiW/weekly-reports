@@ -1,0 +1,48 @@
+/* Shared palette and type scale. Everything in the app pulls from here so a
+   colour change happens in one place. The palette stays in the cool range:
+   slate blues, greys and a muted teal for actions. */
+:root {
+  /* Backgrounds --------------------------------------------------------- */
+  --page-bg: #f3f6f8;        /* overall page background */
+  --panel-bg: #ffffff;       /* card/panel background */
+  --panel-alt-bg: #eef2f5;   /* hover/alternate background inside panels */
+
+  /* Borders --------------------------------------------------------------- */
+  --line: #d7dee4;           /* default hairline border */
+  --line-strong: #bcc7d0;    /* heavier border, e.g. inputs */
+
+  /* Text -------------------------------------------------------------------- */
+  --text-main: #26333d;      /* primary text */
+  --text-soft: #62737f;      /* secondary/muted text (labels, notes) */
+  --text-faint: #8b9aa5;     /* lowest-emphasis text (empty states) */
+
+  /* Actions ----------------------------------------------------------------- */
+  --action: #3f6d80;         /* primary buttons/links */
+  --action-dark: #335869;    /* hover state for action color */
+  --action-tint: #e2ecf1;    /* light background tint of the action color */
+
+  /* Status colors, one per report state, plus a generic alert color -------- */
+  --state-draft: #7b8996;
+  --state-sent: #4b7fa0;
+  --state-fix: #a06a4b;
+  --state-done: #4a7f6b;
+  --alert: #9e4b4b;
+
+  /* Typography -------------------------------------------------------------- */
+  --font-body: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-lg: 17px;
+  --text-xl: 22px;
+
+  /* Spacing scale, used for gaps/padding/margins throughout ---------------- */
+  --gap-xs: 6px;
+  --gap-sm: 10px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+
+  /* Misc ---------------------------------------------------------------------- */
+  --corner: 6px;              /* standard border-radius */
+  --panel-shadow: 0 1px 2px rgba(38, 51, 61, 0.08); /* subtle card shadow */
+}

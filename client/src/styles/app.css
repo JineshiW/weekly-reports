@@ -1,0 +1,391 @@
+@import "./theme.css";
+
+/* Global reset ------------------------------------------------------------ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+}
+
+a {
+  color: var(--action);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: var(--text-xl);
+  margin: 0 0 var(--gap-xs);
+}
+
+h2 {
+  font-size: var(--text-lg);
+  margin: 0 0 var(--gap-sm);
+}
+
+h3 {
+  font-size: var(--text-base);
+  margin: 0 0 var(--gap-xs);
+}
+
+/* Layout ------------------------------------------------------------------ */
+
+.top-bar {
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--line);
+  padding: 0 var(--gap-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+  height: 56px;
+}
+
+.top-bar .brand {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.top-bar nav {
+  display: flex;
+  gap: var(--gap-md);
+  flex: 1;
+}
+
+.top-bar nav a {
+  color: var(--text-soft);
+  padding: 4px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+/* Active nav link gets an underline accent instead of the default link underline */
+.top-bar nav a.active {
+  color: var(--text-main);
+  border-bottom-color: var(--action);
+  text-decoration: none;
+}
+
+.who {
+  color: var(--text-soft);
+  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+/* Constrains and centers page content; individual pages sit inside this */
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--gap-lg);
+}
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--gap-md);
+  margin-bottom: var(--gap-md);
+}
+
+.page-head p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: var(--text-sm);
+}
+
+/* Panels ----------------------------------------------------------------- */
+
+/* Card-like container used throughout (Panel component) */
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--corner);
+  box-shadow: var(--panel-shadow);
+  padding: var(--gap-md);
+  margin-bottom: var(--gap-md);
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--gap-sm);
+}
+
+/* Two equal-width columns, stacks to one column on small screens (see media query) */
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-md);
+}
+
+/* Responsive grid for the dashboard's headline metric cards */
+.grid-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--gap-md);
+}
+
+.metric .label {
+  color: var(--text-soft);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metric .value {
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Forms ------------------------------------------------------------------ */
+
+label {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--text-soft);
+  margin-bottom: 4px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--corner);
+  background: var(--panel-bg);
+  font: inherit;
+  color: var(--text-main);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--action);
+}
+
+textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.field {
+  margin-bottom: var(--gap-sm);
+}
+
+/* Horizontal group of form fields that wraps on narrow screens */
+.row {
+  display: flex;
+  gap: var(--gap-sm);
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.row > * {
+  flex: 1;
+  min-width: 140px;
+}
+
+/* Primary (filled) button style */
+button {
+  font: inherit;
+  padding: 7px 14px;
+  border-radius: var(--corner);
+  border: 1px solid var(--action);
+  background: var(--action);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--action-dark);
+}
+
+/* Secondary button variant — outlined, used for less prominent actions */
+button.plain {
+  background: var(--panel-bg);
+  color: var(--text-main);
+  border-color: var(--line-strong);
+}
+
+button.plain:hover {
+  background: var(--panel-alt-bg);
+}
+
+/* Text-only button variant, styled like a link (used for row-level actions like Edit/Remove) */
+button.link {
+  background: none;
+  border: none;
+  color: var(--action);
+  padding: 0;
+}
+
+button.link:hover {
+  background: none;
+  text-decoration: underline;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.buttons {
+  display: flex;
+  gap: var(--gap-sm);
+  flex-wrap: wrap;
+}
+
+/* Tables ----------------------------------------------------------------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  color: var(--text-soft);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+tbody tr:hover {
+  background: var(--panel-alt-bg);
+}
+
+/* Lets wide tables scroll horizontally instead of breaking the page layout */
+.table-scroll {
+  overflow-x: auto;
+}
+
+/* Small pieces ----------------------------------------------------------- */
+
+/* Base pill style for status labels (StatusTag component); color set per status below */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: var(--text-xs);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.tag.draft {
+  background: var(--state-draft);
+}
+
+.tag.submitted {
+  background: var(--state-sent);
+}
+
+.tag.needs-correction {
+  background: var(--state-fix);
+}
+
+.tag.approved {
+  background: var(--state-done);
+}
+
+.tag.not-started {
+  background: var(--panel-alt-bg);
+  color: var(--text-soft);
+}
+
+.note {
+  color: var(--text-soft);
+  font-size: var(--text-sm);
+}
+
+/* Small badge next to a blocker/achievement flagged as the "key" item of the week */
+.key-mark {
+  color: var(--action);
+  font-size: var(--text-xs);
+  margin-left: 6px;
+}
+
+/* Callout box used for "changes requested" / manager feedback banners */
+.warning-box {
+  border: 1px solid var(--state-fix);
+  background: #f7efe9;
+  border-radius: var(--corner);
+  padding: var(--gap-sm) var(--gap-md);
+  margin-bottom: var(--gap-md);
+}
+
+.error-text {
+  color: var(--alert);
+  font-size: var(--text-sm);
+  margin: var(--gap-xs) 0;
+}
+
+.empty {
+  color: var(--text-faint);
+  padding: var(--gap-md) 0;
+  font-size: var(--text-sm);
+}
+
+.list-plain {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.list-plain li {
+  margin-bottom: 4px;
+}
+
+/* Login/register screen: centers the auth card in the viewport */
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gap-lg);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--panel-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--corner);
+  padding: var(--gap-lg);
+  box-shadow: var(--panel-shadow);
+}
+
+/* Responsive ---------------------------------------------------------------
+   Collapse two-column layouts and let the top bar wrap on narrow screens */
+@media (max-width: 800px) {
+  .grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  .top-bar {
+    height: auto;
+    flex-wrap: wrap;
+    padding: var(--gap-sm) var(--gap-md);
+  }
+}
